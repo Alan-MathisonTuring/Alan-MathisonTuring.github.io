@@ -71,6 +71,60 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-搜索-kkksc03考前临时抱佛脚" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/04/02/%E6%90%9C%E7%B4%A2-kkksc03%E8%80%83%E5%89%8D%E4%B8%B4%E6%97%B6%E6%8A%B1%E4%BD%9B%E8%84%9A/" class="article-date">
+  <time class="dt-published" datetime="2025-04-02T08:53:46.000Z" itemprop="datePublished">2025-04-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/04/02/%E6%90%9C%E7%B4%A2-kkksc03%E8%80%83%E5%89%8D%E4%B8%B4%E6%97%B6%E6%8A%B1%E4%BD%9B%E8%84%9A/">搜索-kkksc03考前临时抱佛脚</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="P2392-kkksc03考前临时抱佛脚"><a href="#P2392-kkksc03考前临时抱佛脚" class="headerlink" title="P2392 kkksc03考前临时抱佛脚"></a>P2392 kkksc03考前临时抱佛脚</h1><h2 id="题目背景"><a href="#题目背景" class="headerlink" title="题目背景"></a>题目背景</h2><p>kkksc03 的大学生活非常的颓废，平时根本不学习。但是，临近期末考试，他必须要开始抱佛脚，以求不挂科。</p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>这次期末考试，kkksc03 需要考 $4$ 科。因此要开始刷习题集，每科都有一个习题集，分别有 $s_1,s_2,s_3,s_4$ 道题目，完成每道题目需要一些时间，可能不等（$A_1,A_2,\ldots,A_{s_1}$，$B_1,B_2,\ldots,B_{s_2}$，$C_1,C_2,\ldots,C_{s_3}$，$D_1,D_2,\ldots,D_{s_4}$）。</p>
+<p>kkksc03 有一个能力，他的左右两个大脑可以同时计算 $2$ 道不同的题目，但是仅限于同一科。因此，kkksc03 必须一科一科的复习。</p>
+<p>由于 kkksc03 还急着去处理洛谷的 bug，因此他希望尽快把事情做完，所以他希望知道能够完成复习的最短时间。</p>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>本题包含 $5$ 行数据：第 $1$ 行，为四个正整数 $s_1,s_2,s_3,s_4$。</p>
+<p>第 $2$ 行，为 $A_1,A_2,\ldots,A_{s_1}$ 共 $s_1$ 个数，表示第一科习题集每道题目所消耗的时间。</p>
+<p>第 $3$ 行，为 $B_1,B_2,\ldots,B_{s_2}$ 共 $s_2$ 个数。</p>
+<p>第 $4$ 行，为 $C_1,C_2,\ldots,C_{s_3}$ 共 $s_3$ 个数。</p>
+<p>第 $5$ 行，为 $D_1,D_2,\ldots,D_{s_4}$ 共 $s_4$ 个数，意思均同上。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出一行,为复习完毕最短时间。</p>
+<h2 id="输入输出样例-1"><a href="#输入输出样例-1" class="headerlink" title="输入输出样例 #1"></a>输入输出样例 #1</h2><h3 id="输入-1"><a href="#输入-1" class="headerlink" title="输入 #1"></a>输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 2 1 3		</span><br><span class="line">5</span><br><span class="line">4 3</span><br><span class="line">6</span><br><span class="line">2 4 3</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出 #1"></a>输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">20</span><br></pre></td></tr></table></figure>
+
+<h2 id="说明-提示"><a href="#说明-提示" class="headerlink" title="说明&#x2F;提示"></a>说明&#x2F;提示</h2><p>$1\leq s_1,s_2,s_3,s_4\leq 20$。</p>
+<p>$1\leq A_1,A_2,\ldots,A_{s_1},B_1,B_2,\ldots,B_{s_2},C_1,C_2,\ldots,C_{s_3},D_1,D_2,\ldots,D_{s_4}\leq60$。<br>##解一 纯暴力递归 10	分<br>#include&lt;stdio.h&gt;<br>#include&lt;math.h&gt;<br>int min,check;<br>int dfs(int x,int t[61],int f[61],int cnt,int sum)<br>{<br>    if (check &#x3D;&#x3D; cnt)<br>    {<br>        if (min &gt; sum+x)<br>            min &#x3D; sum+x;<br>        return ;<br>    }<br>    for (int i &#x3D; 0; i &lt; cnt; i++)<br>    {<br>        if (f[i] &#x3D;&#x3D; 0)<br>        {<br>            check++;<br>            f[i] &#x3D; 1;<br>            int fx &#x3D; (x&gt;t[i]?x:t[i]) - (x&gt;t[i]?t[i]:x);<br>            dfs(fx, t, f, cnt,sum+(x&gt;t[i]?t[i]:x));<br>            f[i] &#x3D; 0;<br>            check–;<br>        }<br>    }<br>}<br>int main()<br>{<br>    int cnt[4];<br>    for (int i &#x3D; 0; i &lt; 4; i++)<br>        scanf(“%d”, &amp;cnt[i]);<br>    int sum &#x3D; 0;<br>    for (int i &#x3D; 0; i &lt; 4; i++)<br>    {<br>        int t[61];<br>        int f[61] &#x3D; { 0 };<br>        for (int j &#x3D; 0; j &lt; cnt[i]; j++)<br>            scanf(“%d”, &amp;t[j]);<br>        min &#x3D; 10000;<br>        for (int k &#x3D; 0; k &lt; cnt[i]; k++)<br>        {<br>            check &#x3D; 1;<br>            f[k] &#x3D; 1;<br>            dfs(t[k], t, f, cnt[i], 0);<br>            f[k] &#x3D; 0;<br>        }<br>        sum +&#x3D; min;<br>    }<br>    printf(“%d”, sum);<br>    return 0;<br>}<br>#对a?b:c运算先后顺序不熟导致调试很九</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/04/02/%E6%90%9C%E7%B4%A2-kkksc03%E8%80%83%E5%89%8D%E4%B8%B4%E6%97%B6%E6%8A%B1%E4%BD%9B%E8%84%9A/" data-id="cm8zp1om40000ygwgac4g1puk" data-title="搜索-kkksc03考前临时抱佛脚" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-搜索-八皇后" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/04/01/%E6%90%9C%E7%B4%A2-%E5%85%AB%E7%9A%87%E5%90%8E/" class="article-date">
@@ -109,7 +163,11 @@
 <p>题目翻译来自NOCOW。</p>
 <p>USACO Training Section 1.5</p>
 <p>#include&lt;stdio.h&gt;<br>int n,count &#x3D; 0;<br>int anwser[15];<br>int dfs(int fx, int c[14], int r[14], int z[25], int x[25], int cnt)<br>{<br>    if (anwser[1] &#x3D;&#x3D; 2&amp;&amp;anwser[2] &#x3D;&#x3D; 4)<br>    {<br>        anwser[1] &#x3D; 2;<br>    }<br>    anwser[cnt] &#x3D; fx;<br>    c[cnt] &#x3D; 1;<br>    r[fx] &#x3D; 1;<br>    z[n + cnt - fx] &#x3D; 1;<br>    x[cnt + fx - 1] &#x3D; 1;<br>    if (cnt &#x3D;&#x3D; n)<br>    {<br>        if (count &lt; 3)<br>            for (int i &#x3D; 1; i &lt;&#x3D; n; i++)<br>            {<br>                printf(“%d”, anwser[i]);<br>                if (i !&#x3D; n)<br>                    printf(“ “);<br>                else<br>                    printf(“\n”);<br>            }<br>        count++;<br>    }<br>    if(cnt &lt; n)<br>    for (int i &#x3D; 1; i &lt;&#x3D; n; i++)<br>    {<br>        if (c[cnt + 1] &#x3D;&#x3D; 0 &amp;&amp; r[i] &#x3D;&#x3D; 0 &amp;&amp; z[n + cnt + 1 - i] &#x3D;&#x3D; 0 &amp;&amp; x[cnt + i] &#x3D;&#x3D; 0)<br>        {<br>            dfs(i, c, r, z, x, cnt + 1);<br>            c[cnt + 1] &#x3D; 0;<br>            r[i] &#x3D; 0;<br>            z[n + cnt + 1 - i] &#x3D; 0;<br>            x[cnt + i] &#x3D; 0;<br>            anwser[cnt + 1] &#x3D; 0;<br>        }<br>    }<br>}<br>int main()<br>{<br>    scanf(“%d”, &amp;n);<br>    for (int i &#x3D; 1; i &lt;&#x3D; n; i++)<br>    {<br>        int c[14] &#x3D; { 0 }, r[14] &#x3D; { 0 }, z[25] &#x3D; { 0 },x[25] &#x3D; { 0 };<br>        dfs(i,c,r,z,x,1);<br>    }<br>    printf(“%d”, count);<br>    return 0;<br>}</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2025/04/01/%E6%90%9C%E7%B4%A2-%E5%85%AB%E7%9A%87%E5%90%8E/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -163,7 +221,11 @@
 </ul>
 <p><strong>【题目来源】</strong></p>
 <p>NOIP 2005 普及组第三题<br>解一 暴力求解 10分<br>#include&lt;stdio.h&gt;<br>int dp[101][101];<br>int main()<br>{<br>    int T, M,t[101], v[101];<br>    scanf(“%d %d”, &amp;T, &amp;M);<br>    for (int i &#x3D; 0; i &lt; M; i++)<br>        scanf(“%d %d”, &amp;t[i], &amp;v[i]);<br>    int max &#x3D; 0;<br>    for (int i &#x3D; 0; i &lt; M; i++)<br>    {<br>        int tsum &#x3D; 0,vsum &#x3D; 0;<br>        for (int j &#x3D; i; j &lt; M; j++)<br>        {<br>            tsum +&#x3D; t[j];<br>            vsum +&#x3D; v[j];<br>            if (tsum &gt; T)<br>                break;<br>            if (vsum &gt; max)<br>                max &#x3D; vsum;<br>        }<br>    }<br>    printf(“%d”, max);<br>    return 0;<br>}</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2025/03/31/%E8%83%8C%E5%8C%85Dp-%E9%87%87%E8%8D%AF-%E5%A4%9A%E8%A7%A3/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -193,7 +255,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/03/27/chenge-first-blog/">chenge-first-blog</a>
+      <a class="p-name article-title" href="/2025/03/27/chenge-first-blog/">the game is on</a>
     </h1>
   
 
@@ -206,7 +268,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/03/27/chenge-first-blog/" data-id="cm8qxxxtl0000zgw7arua864e" data-title="chenge-first-blog" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/03/27/chenge-first-blog/" data-id="cm8qxxxtl0000zgw7arua864e" data-title="the game is on" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -300,6 +362,10 @@
       <ul>
         
           <li>
+            <a href="/2025/04/02/%E6%90%9C%E7%B4%A2-kkksc03%E8%80%83%E5%89%8D%E4%B8%B4%E6%97%B6%E6%8A%B1%E4%BD%9B%E8%84%9A/">搜索-kkksc03考前临时抱佛脚</a>
+          </li>
+        
+          <li>
             <a href="/2025/04/01/%E6%90%9C%E7%B4%A2-%E5%85%AB%E7%9A%87%E5%90%8E/">搜索-八皇后</a>
           </li>
         
@@ -308,7 +374,7 @@
           </li>
         
           <li>
-            <a href="/2025/03/27/chenge-first-blog/">chenge-first-blog</a>
+            <a href="/2025/03/27/chenge-first-blog/">the game is on</a>
           </li>
         
           <li>
