@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>进阶搜索-吃奶酪-多解 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="标签 动态规划Dp 状压Dp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="进阶搜索-吃奶酪-多解">
+<meta property="og:url" content="http://example.com/2025/04/02/%E8%BF%9B%E9%98%B6%E6%90%9C%E7%B4%A2-%E5%90%83%E5%A5%B6%E9%85%AA-%E5%A4%9A%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="标签 动态规划Dp 状压Dp">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-04-02T13:47:49.000Z">
+<meta property="article:modified_time" content="2025-04-02T13:52:58.976Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-进阶搜索-吃奶酪-多解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/04/02/%E8%BF%9B%E9%98%B6%E6%90%9C%E7%B4%A2-%E5%90%83%E5%A5%B6%E9%85%AA-%E5%A4%9A%E8%A7%A3/" class="article-date">
+  <time class="dt-published" datetime="2025-04-02T13:47:49.000Z" itemprop="datePublished">2025-04-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      进阶搜索-吃奶酪-多解
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>标签 动态规划Dp 状压Dp</p>
+<span id="more"></span>
+<h1 id="P1433-吃奶酪"><a href="#P1433-吃奶酪" class="headerlink" title="P1433 吃奶酪"></a>P1433 吃奶酪</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>房间里放着 $n$ 块奶酪。一只小老鼠要把它们都吃掉，问至少要跑多少距离？老鼠一开始在 $(0,0)$ 点处。</p>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行有一个整数，表示奶酪的数量 $n$。</p>
+<p>第 $2$ 到第 $(n + 1)$ 行，每行两个实数，第 $(i + 1)$ 行的实数分别表示第 $i$ 块奶酪的横纵坐标 $x_i, y_i$。</p>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出一行一个实数，表示要跑的最少距离，保留 $2$ 位小数。</p>
+<h2 id="输入输出样例-1"><a href="#输入输出样例-1" class="headerlink" title="输入输出样例 #1"></a>输入输出样例 #1</h2><h3 id="输入-1"><a href="#输入-1" class="headerlink" title="输入 #1"></a>输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">1 1</span><br><span class="line">1 -1</span><br><span class="line">-1 1</span><br><span class="line">-1 -1</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出 #1"></a>输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7.41</span><br></pre></td></tr></table></figure>
+
+<h2 id="说明-提示"><a href="#说明-提示" class="headerlink" title="说明&#x2F;提示"></a>说明&#x2F;提示</h2><h4 id="数据规模与约定"><a href="#数据规模与约定" class="headerlink" title="数据规模与约定"></a>数据规模与约定</h4><p>对于全部的测试点，保证 $1\leq n\leq 15$，$|x_i|, |y_i| \leq 200$，小数点后最多有 $3$ 位数字。</p>
+<h4 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h4><p>对于两个点 $(x_1,y_1)$，$(x_2, y_2)$，两点之间的距离公式为 $\sqrt{(x_1-x_2)^2+(y_1-y_2)^2}$。</p>
+<hr>
+<p>$2022.7.13$：新增加一组 $\text{Hack}$ 数据。<br>##解一 暴力递归 40分<br>#include&lt;stdio.h&gt;<br>#include&lt;math.h&gt;<br>int n;<br>int xy[2][201];<br>double min &#x3D; 0x3f3f3f;<br>void dfs(int x, int y, int f[201],int cnt,double sum)<br>{<br>    if (cnt &#x3D;&#x3D; n)<br>    {<br>        if (min &gt; sum)<br>            min &#x3D; sum;<br>        return;<br>    }<br>    for(int i &#x3D; 0;i &lt; n;i++)<br>        if (f[i] &#x3D;&#x3D; 0)<br>        {<br>            f[i] &#x3D; 1;<br>            dfs(xy[0][i], xy[1][i], f, cnt + 1, sum + sqrt(pow(x - xy[0][i], 2) + pow(y - xy[1][i], 2)));<br>            f[i] &#x3D; 0;<br>        }<br>}<br>int main()<br>{<br>    scanf(“%d”, &amp;n);<br>    int f[201] &#x3D; { 0 };<br>    for (int i &#x3D; 0; i &lt; n; i++)<br>        scanf(“%d %d”, &amp;xy[0][i], &amp;xy[1][i]);<br>    dfs(0, 0, f,0,0);<br>    printf(“%.2f”, min);<br>}<br>有十分是答案错误，应该是没把输入改为浮点型，但改完浮点型错更多了，应该是某库不兼容浮点型。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/04/02/%E8%BF%9B%E9%98%B6%E6%90%9C%E7%B4%A2-%E5%90%83%E5%A5%B6%E9%85%AA-%E5%A4%9A%E8%A7%A3/" data-id="cm8zzlu0a00005owgg26g8567" data-title="进阶搜索-吃奶酪-多解" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/04/02/%E6%90%9C%E7%B4%A2-kkksc03%E8%80%83%E5%89%8D%E4%B8%B4%E6%97%B6%E6%8A%B1%E4%BD%9B%E8%84%9A/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">搜索-kkksc03考前临时抱佛脚</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">March 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/04/02/%E8%BF%9B%E9%98%B6%E6%90%9C%E7%B4%A2-%E5%90%83%E5%A5%B6%E9%85%AA-%E5%A4%9A%E8%A7%A3/">进阶搜索-吃奶酪-多解</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/02/%E6%90%9C%E7%B4%A2-kkksc03%E8%80%83%E5%89%8D%E4%B8%B4%E6%97%B6%E6%8A%B1%E4%BD%9B%E8%84%9A/">搜索-kkksc03考前临时抱佛脚</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/01/%E6%90%9C%E7%B4%A2-%E5%85%AB%E7%9A%87%E5%90%8E/">搜索-八皇后</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/31/%E8%83%8C%E5%8C%85Dp-%E9%87%87%E8%8D%AF-%E5%A4%9A%E8%A7%A3/">背包Dp-采药-多解</a>
+          </li>
+        
+          <li>
+            <a href="/2025/03/27/chenge-first-blog/">the game is on</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
