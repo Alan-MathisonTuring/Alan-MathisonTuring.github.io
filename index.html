@@ -97,18 +97,6 @@
 <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>这次期末考试，kkksc03 需要考 $4$ 科。因此要开始刷习题集，每科都有一个习题集，分别有 $s_1,s_2,s_3,s_4$ 道题目，完成每道题目需要一些时间，可能不等（$A_1,A_2,\ldots,A_{s_1}$，$B_1,B_2,\ldots,B_{s_2}$，$C_1,C_2,\ldots,C_{s_3}$，$D_1,D_2,\ldots,D_{s_4}$）。</p>
 <p>kkksc03 有一个能力，他的左右两个大脑可以同时计算 $2$ 道不同的题目，但是仅限于同一科。因此，kkksc03 必须一科一科的复习。</p>
 <p>由于 kkksc03 还急着去处理洛谷的 bug，因此他希望尽快把事情做完，所以他希望知道能够完成复习的最短时间。</p>
-<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>本题包含 $5$ 行数据：第 $1$ 行，为四个正整数 $s_1,s_2,s_3,s_4$。</p>
-<p>第 $2$ 行，为 $A_1,A_2,\ldots,A_{s_1}$ 共 $s_1$ 个数，表示第一科习题集每道题目所消耗的时间。</p>
-<p>第 $3$ 行，为 $B_1,B_2,\ldots,B_{s_2}$ 共 $s_2$ 个数。</p>
-<p>第 $4$ 行，为 $C_1,C_2,\ldots,C_{s_3}$ 共 $s_3$ 个数。</p>
-<p>第 $5$ 行，为 $D_1,D_2,\ldots,D_{s_4}$ 共 $s_4$ 个数，意思均同上。</p>
-<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出一行,为复习完毕最短时间。</p>
-<h2 id="输入输出样例-1"><a href="#输入输出样例-1" class="headerlink" title="输入输出样例 #1"></a>输入输出样例 #1</h2><h3 id="输入-1"><a href="#输入-1" class="headerlink" title="输入 #1"></a>输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 2 1 3		</span><br><span class="line">5</span><br><span class="line">4 3</span><br><span class="line">6</span><br><span class="line">2 4 3</span><br></pre></td></tr></table></figure>
-
-<h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出 #1"></a>输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">20</span><br></pre></td></tr></table></figure>
-
-<h2 id="说明-提示"><a href="#说明-提示" class="headerlink" title="说明&#x2F;提示"></a>说明&#x2F;提示</h2><p>$1\leq s_1,s_2,s_3,s_4\leq 20$。</p>
-<p>$1\leq A_1,A_2,\ldots,A_{s_1},B_1,B_2,\ldots,B_{s_2},C_1,C_2,\ldots,C_{s_3},D_1,D_2,\ldots,D_{s_4}\leq60$。<br>##解一 纯暴力递归 10	分<br>#include&lt;stdio.h&gt;<br>#include&lt;math.h&gt;<br>int min,check;<br>int dfs(int x,int t[61],int f[61],int cnt,int sum)<br>{<br>    if (check &#x3D;&#x3D; cnt)<br>    {<br>        if (min &gt; sum+x)<br>            min &#x3D; sum+x;<br>        return ;<br>    }<br>    for (int i &#x3D; 0; i &lt; cnt; i++)<br>    {<br>        if (f[i] &#x3D;&#x3D; 0)<br>        {<br>            check++;<br>            f[i] &#x3D; 1;<br>            int fx &#x3D; (x&gt;t[i]?x:t[i]) - (x&gt;t[i]?t[i]:x);<br>            dfs(fx, t, f, cnt,sum+(x&gt;t[i]?t[i]:x));<br>            f[i] &#x3D; 0;<br>            check–;<br>        }<br>    }<br>}<br>int main()<br>{<br>    int cnt[4];<br>    for (int i &#x3D; 0; i &lt; 4; i++)<br>        scanf(“%d”, &amp;cnt[i]);<br>    int sum &#x3D; 0;<br>    for (int i &#x3D; 0; i &lt; 4; i++)<br>    {<br>        int t[61];<br>        int f[61] &#x3D; { 0 };<br>        for (int j &#x3D; 0; j &lt; cnt[i]; j++)<br>            scanf(“%d”, &amp;t[j]);<br>        min &#x3D; 10000;<br>        for (int k &#x3D; 0; k &lt; cnt[i]; k++)<br>        {<br>            check &#x3D; 1;<br>            f[k] &#x3D; 1;<br>            dfs(t[k], t, f, cnt[i], 0);<br>            f[k] &#x3D; 0;<br>        }<br>        sum +&#x3D; min;<br>    }<br>    printf(“%d”, sum);<br>    return 0;<br>}<br>#对a?b:c运算先后顺序不熟导致调试很久</p>
         
           <p class="article-more-link">
             <a href="/2025/04/02/%E6%90%9C%E7%B4%A2-kkksc03%E8%80%83%E5%89%8D%E4%B8%B4%E6%97%B6%E6%8A%B1%E4%BD%9B%E8%84%9A/#more">Read More</a>
@@ -157,16 +145,6 @@
 <p>行号 $1\ 2\ 3\ 4\ 5\ 6$</p>
 <p>列号 $2\ 4\ 6\ 1\ 3\ 5$</p>
 <p>这只是棋子放置的一个解。请编一个程序找出所有棋子放置的解。<br>并把它们以上面的序列方法输出，解按字典顺序排列。<br>请输出前 $3$ 个解。最后一行是解的总个数。</p>
-<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>一行一个正整数 $n$，表示棋盘是 $n \times n$ 大小的。</p>
-<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>前三行为前三个解，每个解的两个数字之间用一个空格隔开。第四行只有一个数字，表示解的总数。</p>
-<h2 id="输入输出样例-1"><a href="#输入输出样例-1" class="headerlink" title="输入输出样例 #1"></a>输入输出样例 #1</h2><h3 id="输入-1"><a href="#输入-1" class="headerlink" title="输入 #1"></a>输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6</span><br></pre></td></tr></table></figure>
-
-<h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出 #1"></a>输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2 4 6 1 3 5</span><br><span class="line">3 6 2 5 1 4</span><br><span class="line">4 1 5 2 6 3</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
-
-<h2 id="说明-提示"><a href="#说明-提示" class="headerlink" title="说明&#x2F;提示"></a>说明&#x2F;提示</h2><p>【数据范围】<br>对于 $100%$ 的数据，$6 \le n \le 13$。</p>
-<p>题目翻译来自NOCOW。</p>
-<p>USACO Training Section 1.5</p>
-<p>#include&lt;stdio.h&gt;<br>int n,count &#x3D; 0;<br>int anwser[15];<br>int dfs(int fx, int c[14], int r[14], int z[25], int x[25], int cnt)<br>{<br>    if (anwser[1] &#x3D;&#x3D; 2&amp;&amp;anwser[2] &#x3D;&#x3D; 4)<br>    {<br>        anwser[1] &#x3D; 2;<br>    }<br>    anwser[cnt] &#x3D; fx;<br>    c[cnt] &#x3D; 1;<br>    r[fx] &#x3D; 1;<br>    z[n + cnt - fx] &#x3D; 1;<br>    x[cnt + fx - 1] &#x3D; 1;<br>    if (cnt &#x3D;&#x3D; n)<br>    {<br>        if (count &lt; 3)<br>            for (int i &#x3D; 1; i &lt;&#x3D; n; i++)<br>            {<br>                printf(“%d”, anwser[i]);<br>                if (i !&#x3D; n)<br>                    printf(“ “);<br>                else<br>                    printf(“\n”);<br>            }<br>        count++;<br>    }<br>    if(cnt &lt; n)<br>    for (int i &#x3D; 1; i &lt;&#x3D; n; i++)<br>    {<br>        if (c[cnt + 1] &#x3D;&#x3D; 0 &amp;&amp; r[i] &#x3D;&#x3D; 0 &amp;&amp; z[n + cnt + 1 - i] &#x3D;&#x3D; 0 &amp;&amp; x[cnt + i] &#x3D;&#x3D; 0)<br>        {<br>            dfs(i, c, r, z, x, cnt + 1);<br>            c[cnt + 1] &#x3D; 0;<br>            r[i] &#x3D; 0;<br>            z[n + cnt + 1 - i] &#x3D; 0;<br>            x[cnt + i] &#x3D; 0;<br>            anwser[cnt + 1] &#x3D; 0;<br>        }<br>    }<br>}<br>int main()<br>{<br>    scanf(“%d”, &amp;n);<br>    for (int i &#x3D; 1; i &lt;&#x3D; n; i++)<br>    {<br>        int c[14] &#x3D; { 0 }, r[14] &#x3D; { 0 }, z[25] &#x3D; { 0 },x[25] &#x3D; { 0 };<br>        dfs(i,c,r,z,x,1);<br>    }<br>    printf(“%d”, count);<br>    return 0;<br>}</p>
         
           <p class="article-more-link">
             <a href="/2025/04/01/%E6%90%9C%E7%B4%A2-%E5%85%AB%E7%9A%87%E5%90%8E/#more">Read More</a>
@@ -211,20 +189,6 @@
       
         <h1 id="P1048-NOIP-2005-普及组-采药"><a href="#P1048-NOIP-2005-普及组-采药" class="headerlink" title="P1048 [NOIP 2005 普及组] 采药"></a>P1048 [NOIP 2005 普及组] 采药</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>辰辰是个天资聪颖的孩子，他的梦想是成为世界上最伟大的医师。为此，他想拜附近最有威望的医师为师。医师为了判断他的资质，给他出了一个难题。医师把他带到一个到处都是草药的山洞里对他说：“孩子，这个山洞里有一些不同的草药，采每一株都需要一些时间，每一株也有它自身的价值。我会给你一段时间，在这段时间里，你可以采到一些草药。如果你是一个聪明的孩子，你应该可以让采到的草药的总价值最大。”</p>
 <p>如果你是辰辰，你能完成这个任务吗？</p>
-<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行有 $2$ 个整数 $T$（$1 \le T \le 1000$）和 $M$（$1 \le  M \le 100$），用一个空格隔开，$T$ 代表总共能够用来采药的时间，$M$ 代表山洞里的草药的数目。</p>
-<p>接下来的 $M$ 行每行包括两个在 $1$ 到 $100$ 之间（包括 $1$ 和 $100$）的整数，分别表示采摘某株草药的时间和这株草药的价值。</p>
-<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出在规定的时间内可以采到的草药的最大总价值。</p>
-<h2 id="输入输出样例-1"><a href="#输入输出样例-1" class="headerlink" title="输入输出样例 #1"></a>输入输出样例 #1</h2><h3 id="输入-1"><a href="#输入-1" class="headerlink" title="输入 #1"></a>输入 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">70 3</span><br><span class="line">71 100</span><br><span class="line">69 1</span><br><span class="line">1 2</span><br></pre></td></tr></table></figure>
-
-<h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出 #1"></a>输出 #1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
-
-<h2 id="说明-提示"><a href="#说明-提示" class="headerlink" title="说明&#x2F;提示"></a>说明&#x2F;提示</h2><p><strong>【数据范围】</strong></p>
-<ul>
-<li>对于 $30%$ 的数据，$M \le 10$；</li>
-<li>对于全部的数据，$M \le 100$。</li>
-</ul>
-<p><strong>【题目来源】</strong></p>
-<p>NOIP 2005 普及组第三题<br>解一 暴力求解 10分<br>#include&lt;stdio.h&gt;<br>int dp[101][101];<br>int main()<br>{<br>    int T, M,t[101], v[101];<br>    scanf(“%d %d”, &amp;T, &amp;M);<br>    for (int i &#x3D; 0; i &lt; M; i++)<br>        scanf(“%d %d”, &amp;t[i], &amp;v[i]);<br>    int max &#x3D; 0;<br>    for (int i &#x3D; 0; i &lt; M; i++)<br>    {<br>        int tsum &#x3D; 0,vsum &#x3D; 0;<br>        for (int j &#x3D; i; j &lt; M; j++)<br>        {<br>            tsum +&#x3D; t[j];<br>            vsum +&#x3D; v[j];<br>            if (tsum &gt; T)<br>                break;<br>            if (vsum &gt; max)<br>                max &#x3D; vsum;<br>        }<br>    }<br>    printf(“%d”, max);<br>    return 0;<br>}</p>
         
           <p class="article-more-link">
             <a href="/2025/03/31/%E8%83%8C%E5%8C%85Dp-%E9%87%87%E8%8D%AF-%E5%A4%9A%E8%A7%A3/#more">Read More</a>
